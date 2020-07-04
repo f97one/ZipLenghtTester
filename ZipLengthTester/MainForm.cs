@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ZipLengthTester
@@ -57,7 +58,7 @@ namespace ZipLengthTester
             var props = Properties.Settings.Default;
 
             this.ThousandIsBitCheck.Checked = props.ThousandIsBit;
-            this.FileLenghtLimitBox.Text = props.DefaultLenghtLimit.ToString();
+            this.FileLengthLimitBox.Text = props.DefaultLenghtLimit.ToString();
             this.UnitSelectionBox.SelectedValue = props.DefaultUnit;
 
         }
@@ -95,10 +96,34 @@ namespace ZipLengthTester
             var props = Properties.Settings.Default;
             props.ThousandIsBit = this.ThousandIsBitCheck.Checked;
             props.DefaultUnit = (int) this.UnitSelectionBox.SelectedValue;
-            props.DefaultLenghtLimit = long.Parse(this.FileLenghtLimitBox.Text);
+            props.DefaultLenghtLimit = long.Parse(this.FileLengthLimitBox.Text);
 
             props.Save();
             this.toolStripStatusLabel1.Text = "設定を保存しました。";
+        }
+
+        private void FileLengthLimitBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var tb = (TextBox) sender;
+            var inputText = tb.Text;
+            Regex regex = new Regex("^[0-9]+$");
+            if (!regex.IsMatch(inputText))
+            {
+                this.errorProvider1.SetError(tb, "半角数字のみ");
+                e.Cancel = true;
+            }
+
+            var length = long.Parse(inputText);
+            if (length < 1 || length > 999999)
+            {
+                this.errorProvider1.SetError(tb, "1以上999999以下");
+                e.Cancel = true;
+            }
+        }
+
+        private void FileLengthLimitBox_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider1.SetError((TextBox) sender, null);
         }
     }
 }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.FileLenghtLimitBox = new System.Windows.Forms.TextBox();
+            this.FileLengthLimitBox = new System.Windows.Forms.TextBox();
             this.UnitSelectionBox = new System.Windows.Forms.ComboBox();
             this.ThousandIsBitCheck = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,8 +42,10 @@
             this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -55,14 +57,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "展開後のファイルサイズ上限";
             // 
-            // FileLenghtLimitBox
+            // FileLengthLimitBox
             // 
-            this.FileLenghtLimitBox.Location = new System.Drawing.Point(158, 13);
-            this.FileLenghtLimitBox.MaxLength = 6;
-            this.FileLenghtLimitBox.Name = "FileLenghtLimitBox";
-            this.FileLenghtLimitBox.Size = new System.Drawing.Size(53, 19);
-            this.FileLenghtLimitBox.TabIndex = 1;
-            this.FileLenghtLimitBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.FileLengthLimitBox.Location = new System.Drawing.Point(158, 13);
+            this.FileLengthLimitBox.MaxLength = 6;
+            this.FileLengthLimitBox.Name = "FileLengthLimitBox";
+            this.FileLengthLimitBox.Size = new System.Drawing.Size(53, 19);
+            this.FileLengthLimitBox.TabIndex = 1;
+            this.FileLengthLimitBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.FileLengthLimitBox.Validating += new System.ComponentModel.CancelEventHandler(this.FileLengthLimitBox_Validating);
+            this.FileLengthLimitBox.Validated += new System.EventHandler(this.FileLengthLimitBox_Validated);
             // 
             // UnitSelectionBox
             // 
@@ -164,6 +168,10 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -178,7 +186,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ThousandIsBitCheck);
             this.Controls.Add(this.UnitSelectionBox);
-            this.Controls.Add(this.FileLenghtLimitBox);
+            this.Controls.Add(this.FileLengthLimitBox);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -186,6 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,7 +203,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox FileLenghtLimitBox;
+        private System.Windows.Forms.TextBox FileLengthLimitBox;
         private System.Windows.Forms.ComboBox UnitSelectionBox;
         private System.Windows.Forms.CheckBox ThousandIsBitCheck;
         private System.Windows.Forms.Label label2;
@@ -206,6 +215,7 @@
         private System.Windows.Forms.BindingSource programBindingSource;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
