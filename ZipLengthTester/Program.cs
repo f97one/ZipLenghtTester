@@ -12,8 +12,14 @@ namespace ZipLengthTester
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            string filepath = "";
+            if (args != null && args.Length > 0)
+            {
+                filepath = args[0];
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

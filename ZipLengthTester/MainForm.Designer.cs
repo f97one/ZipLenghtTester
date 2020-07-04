@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.FileLenghtLimitBox = new System.Windows.Forms.TextBox();
             this.UnitSelectionBox = new System.Windows.Forms.ComboBox();
@@ -38,6 +39,8 @@
             this.CalcLengthBtn = new System.Windows.Forms.Button();
             this.SaveSetteingsBtn = new System.Windows.Forms.Button();
             this.ResultLabel = new System.Windows.Forms.Label();
+            this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -137,6 +140,10 @@
             this.ResultLabel.Text = "このファイルの展開後のサイズは 63.5 MB です。";
             this.ResultLabel.Visible = false;
             // 
+            // programBindingSource
+            // 
+            this.programBindingSource.DataSource = typeof(ZipLengthTester.Program);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -155,6 +162,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Zip Length Tester";
+            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +180,7 @@
         private System.Windows.Forms.Button CalcLengthBtn;
         private System.Windows.Forms.Button SaveSetteingsBtn;
         private System.Windows.Forms.Label ResultLabel;
+        private System.Windows.Forms.BindingSource programBindingSource;
     }
 }
 
