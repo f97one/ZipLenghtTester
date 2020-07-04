@@ -40,7 +40,10 @@
             this.SaveSetteingsBtn = new System.Windows.Forms.Button();
             this.ResultLabel = new System.Windows.Forms.Label();
             this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -136,7 +139,7 @@
             this.ResultLabel.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ResultLabel.Location = new System.Drawing.Point(14, 183);
             this.ResultLabel.Name = "ResultLabel";
-            this.ResultLabel.Size = new System.Drawing.Size(464, 107);
+            this.ResultLabel.Size = new System.Drawing.Size(464, 94);
             this.ResultLabel.TabIndex = 9;
             this.ResultLabel.Text = "このファイルの展開後のサイズは 63.5 MB です。";
             this.ResultLabel.Visible = false;
@@ -145,11 +148,28 @@
             // 
             this.programBindingSource.DataSource = typeof(ZipLengthTester.Program);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 277);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(490, 22);
+            this.statusStrip1.TabIndex = 10;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 299);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ResultLabel);
             this.Controls.Add(this.SaveSetteingsBtn);
             this.Controls.Add(this.CalcLengthBtn);
@@ -164,6 +184,8 @@
             this.Name = "MainForm";
             this.Text = "Zip Length Tester";
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,6 +204,8 @@
         private System.Windows.Forms.Button SaveSetteingsBtn;
         private System.Windows.Forms.Label ResultLabel;
         private System.Windows.Forms.BindingSource programBindingSource;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 
