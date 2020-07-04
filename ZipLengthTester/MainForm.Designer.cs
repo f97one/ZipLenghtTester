@@ -126,6 +126,7 @@
             this.SaveSetteingsBtn.TabIndex = 8;
             this.SaveSetteingsBtn.Text = "設定保存";
             this.SaveSetteingsBtn.UseVisualStyleBackColor = true;
+            this.SaveSetteingsBtn.Click += new System.EventHandler(this.OnClickSaveSettingsBtn);
             // 
             // ResultLabel
             // 

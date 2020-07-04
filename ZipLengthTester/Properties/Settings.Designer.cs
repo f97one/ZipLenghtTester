@@ -37,10 +37,10 @@ namespace ZipLengthTester.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MB")]
-        public string DefaultUnit {
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int DefaultUnit {
             get {
-                return ((string)(this["DefaultUnit"]));
+                return ((int)(this["DefaultUnit"]));
             }
             set {
                 this["DefaultUnit"] = value;

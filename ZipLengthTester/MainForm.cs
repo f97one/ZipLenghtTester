@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,7 +60,7 @@ namespace ZipLengthTester
 
             this.ThousandIsBitCheck.Checked = props.ThousandIsBit;
             this.FileLenghtLimitBox.Text = props.DefaultLenghtLimit.ToString();
-            this.UnitSelectionBox.SelectedText = props.DefaultUnit;
+            this.UnitSelectionBox.SelectedValue = props.DefaultUnit;
 
         }
 
@@ -81,6 +82,21 @@ namespace ZipLengthTester
             this.UnitSelectionBox.DataSource = new BindingSource(CreateUnitSelectionItems(), null);
             this.UnitSelectionBox.DisplayMember = "Value";
             this.UnitSelectionBox.ValueMember = "Key";
+        }
+
+        /// <summary>
+        /// 設定保存を押したときの処理。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClickSaveSettingsBtn(object sender, EventArgs e)
+        {
+            var props = Properties.Settings.Default;
+            props.ThousandIsBit = this.ThousandIsBitCheck.Checked;
+            props.DefaultUnit = (int) this.UnitSelectionBox.SelectedValue;
+            props.DefaultLenghtLimit = long.Parse(this.FileLenghtLimitBox.Text);
+
+            props.Save();
         }
     }
 }
