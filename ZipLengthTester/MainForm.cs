@@ -68,7 +68,7 @@ namespace ZipLengthTester
         /// <returns>ドロップダウンの項目</returns>
         private IDictionary<int, string> CreateUnitSelectionItems()
         {
-            IDictionary<int, string> ret = new Dictionary<int, String>();
+            IDictionary<int, string> ret = new Dictionary<int, string>();
             ret[6] = "MB";
             ret[3] = "KB";
 
