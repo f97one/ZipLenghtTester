@@ -23,6 +23,20 @@ namespace ZipLengthTester
             InitializeComponent();
 
             InitUi(filepath);
+
+            if (!string.IsNullOrEmpty(filepath))
+            {
+                // todo 
+                this.FilePathLabel.Text = Path.GetFileName(testFilePath);
+                if (new ZipFileOperation().IsPkZipCompressedData(File.ReadAllBytes(testFilePath)))
+                {
+                    CalcAndDisplay();
+                }
+                else
+                {
+                    this.toolStripStatusLabel1.Text = "ファイルはZip圧縮されたものではありません。";
+                }
+            }
         }
 
         private void InitUi(string filepath)
@@ -167,6 +181,8 @@ namespace ZipLengthTester
                 {
                     this.testFilePath = Path.GetFullPath(ofd.FileName);
                     this.FilePathLabel.Text = ofd.SafeFileName;
+
+                    this.ResultLabel.Visible = false;
                 }
                 else
                 {
@@ -176,6 +192,11 @@ namespace ZipLengthTester
         }
 
         private void CalcLengthBtn_Click(object sender, EventArgs e)
+        {
+            CalcAndDisplay();
+        }
+
+        private void CalcAndDisplay()
         {
             LockUi(false);
 
@@ -191,7 +212,7 @@ namespace ZipLengthTester
 
                     string msg = $"このファイルの展開後のサイズは {totalLen:##.##} {unit} です。";
                     var sb = new StringBuilder(msg);
-                    
+
                     var t = thousandIsBit ? 1024 : 1000;
                     var limitLen = long.Parse(this.FileLengthLimitBox.Text);
 
