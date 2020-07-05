@@ -6,7 +6,7 @@
       <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="DefaultUnit" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">6</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="ThousandIsBit" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
