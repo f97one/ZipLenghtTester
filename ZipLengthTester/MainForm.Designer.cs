@@ -34,18 +34,18 @@
             this.UnitSelectionBox = new System.Windows.Forms.ComboBox();
             this.ThousandIsBitCheck = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.FileePathLabel = new System.Windows.Forms.Label();
+            this.FilePathLabel = new System.Windows.Forms.Label();
             this.FileSelectionBtn = new System.Windows.Forms.Button();
             this.CalcLengthBtn = new System.Windows.Forms.Button();
             this.SaveSetteingsBtn = new System.Windows.Forms.Button();
             this.ResultLabel = new System.Windows.Forms.Label();
-            this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
+            this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -95,14 +95,14 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "読み込むファイル";
             // 
-            // FileePathLabel
+            // FilePathLabel
             // 
-            this.FileePathLabel.AutoSize = true;
-            this.FileePathLabel.Location = new System.Drawing.Point(158, 70);
-            this.FileePathLabel.Name = "FileePathLabel";
-            this.FileePathLabel.Size = new System.Drawing.Size(43, 12);
-            this.FileePathLabel.TabIndex = 5;
-            this.FileePathLabel.Text = "filepath";
+            this.FilePathLabel.AutoSize = true;
+            this.FilePathLabel.Location = new System.Drawing.Point(158, 70);
+            this.FilePathLabel.Name = "FilePathLabel";
+            this.FilePathLabel.Size = new System.Drawing.Size(43, 12);
+            this.FilePathLabel.TabIndex = 5;
+            this.FilePathLabel.Text = "filepath";
             // 
             // FileSelectionBtn
             // 
@@ -112,6 +112,7 @@
             this.FileSelectionBtn.TabIndex = 6;
             this.FileSelectionBtn.Text = "参照";
             this.FileSelectionBtn.UseVisualStyleBackColor = true;
+            this.FileSelectionBtn.Click += new System.EventHandler(this.FileSelectionBtn_Click);
             // 
             // CalcLengthBtn
             // 
@@ -148,10 +149,6 @@
             this.ResultLabel.Text = "このファイルの展開後のサイズは 63.5 MB です。";
             this.ResultLabel.Visible = false;
             // 
-            // programBindingSource
-            // 
-            this.programBindingSource.DataSource = typeof(ZipLengthTester.Program);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -172,6 +169,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // programBindingSource
+            // 
+            this.programBindingSource.DataSource = typeof(ZipLengthTester.Program);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -182,7 +183,7 @@
             this.Controls.Add(this.SaveSetteingsBtn);
             this.Controls.Add(this.CalcLengthBtn);
             this.Controls.Add(this.FileSelectionBtn);
-            this.Controls.Add(this.FileePathLabel);
+            this.Controls.Add(this.FilePathLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ThousandIsBitCheck);
             this.Controls.Add(this.UnitSelectionBox);
@@ -191,10 +192,10 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Zip Length Tester";
-            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +208,7 @@
         private System.Windows.Forms.ComboBox UnitSelectionBox;
         private System.Windows.Forms.CheckBox ThousandIsBitCheck;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label FileePathLabel;
+        private System.Windows.Forms.Label FilePathLabel;
         private System.Windows.Forms.Button FileSelectionBtn;
         private System.Windows.Forms.Button CalcLengthBtn;
         private System.Windows.Forms.Button SaveSetteingsBtn;

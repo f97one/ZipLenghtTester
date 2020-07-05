@@ -41,12 +41,12 @@ namespace ZipLengthTester
             if (string.IsNullOrEmpty(filepath))
             {
                 this.testFilePath = "";
-                this.FileePathLabel.Text = "(ファイルは選択されていません)";
+                this.FilePathLabel.Text = "(ファイルは選択されていません)";
             }
             else
             {
                 this.testFilePath = Path.IsPathRooted(filepath) ? filepath : Path.GetFullPath(filepath);
-                this.FileePathLabel.Text = Path.GetFileName(this.testFilePath);
+                this.FilePathLabel.Text = Path.GetFileName(this.testFilePath);
             }
         }
 
@@ -124,6 +124,55 @@ namespace ZipLengthTester
         private void FileLengthLimitBox_Validated(object sender, EventArgs e)
         {
             this.errorProvider1.SetError((TextBox) sender, null);
+        }
+
+        /// <summary>
+        /// 操作可能なUIコンポーネントのロックを設定する。
+        /// </summary>
+        /// <param name="locked">ロックするときtrue、そうでないときfalse</param>
+        private void LockUi(bool locked)
+        {
+            this.FileLengthLimitBox.Enabled = locked;
+            this.UnitSelectionBox.Enabled = locked;
+            this.ThousandIsBitCheck.Enabled = locked;
+            this.CalcLengthBtn.Enabled = locked;
+            this.FileSelectionBtn.Enabled = locked;
+            this.SaveSetteingsBtn.Enabled = locked;
+
+        }
+
+        private void FileSelectionBtn_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "";
+
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "開くファイルを選択してください"
+            };
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var bytes = default(byte[]);
+                using (var memstream = new MemoryStream())
+                {
+                    ofd.OpenFile().CopyTo(memstream);
+                    bytes = memstream.ToArray();
+                }
+
+                var zfo = new ZipFileOperation();
+                if (zfo.IsPkZipCompressedData(bytes))
+                {
+                    this.testFilePath = Path.GetFullPath(ofd.FileName);
+                    this.FilePathLabel.Text = ofd.SafeFileName;
+                }
+                else
+                {
+                    toolStripStatusLabel1.Text = "ファイルはZip圧縮されたものではありません。";
+                }
+            }
+
         }
     }
 }
