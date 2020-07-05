@@ -12,16 +12,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "SetupProject", "SetupProject\SetupProject.wixproj", "{75BC1BC2-381B-46B2-BE41-ACC1C477967B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Debug|x86.Build.0 = Debug|Any CPU
 		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A20CC24-CB3C-4FCF-9970-602F26F8FFC4}.Release|x86.Build.0 = Release|Any CPU
+		{75BC1BC2-381B-46B2-BE41-ACC1C477967B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{75BC1BC2-381B-46B2-BE41-ACC1C477967B}.Debug|x86.ActiveCfg = Debug|x86
+		{75BC1BC2-381B-46B2-BE41-ACC1C477967B}.Debug|x86.Build.0 = Debug|x86
+		{75BC1BC2-381B-46B2-BE41-ACC1C477967B}.Release|Any CPU.ActiveCfg = Release|x86
+		{75BC1BC2-381B-46B2-BE41-ACC1C477967B}.Release|x86.ActiveCfg = Release|x86
+		{75BC1BC2-381B-46B2-BE41-ACC1C477967B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

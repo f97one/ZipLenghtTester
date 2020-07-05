@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="3C912C24-8EF7-47A5-85F7-FE6415BB8A72" Name="Zip Length Tester Setuo" Language="1041" Version="1.0.0.0" Manufacturer="HAJIME Fukuna" UpgradeCode="E9CA3117-426F-41FA-8996-CEAE4C022B7A">
+        <Package Description="Test file in a Product" Comments="Simple test" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" />
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Name="ZipLengthTester" Id="ZIPLENGTHTESTER">
+                    <Directory Id="RELEASE" Name="Release">
+                        <Component Id="ZIPLENGTHTESTER.EXE" DiskId="1" Guid="DEBCED06-B50C-4E51-AC7E-B373B81335EA">
+                            <File Id="ZIPLENGTHTESTER.EXE" Name="ZipLengthTester.exe" Source="..\ZipLengthTester\bin\Release\ZipLengthTester.exe">
+                                <Shortcut Id="desktopShortcut" Directory="DesktopFolder" Name="Zip Length Tester" WorkingDirectory="INSTALLDIR" Advertise="yes" Icon="DesktopIcon.exe" IconIndex="0" />
+                                <Shortcut Id="ExeShortcut" Directory="ProgramMenuDir" Name="Zip Length Tester" Advertise="yes" Icon="StartMenuIcon.exe" IconIndex="0" />
+                                <Shortcut Id="ExeSendToShorcut" Name="Open with Zip Length Tester" Icon="SendToIcon.exe" IconIndex="0" WorkingDirectory="INSTALLDIR" Advertise="yes" Directory="SendToFolder" />
+                            </File>
+                        </Component>
+                        <Component Id="ZIPLENGTHTESTER.EXE.CONFIG" DiskId="1" Guid="3A25B9ED-A9B5-4475-B443-5EEB7BAFEE34">
+                            <File Id="ZIPLENGTHTESTER.EXE.CONFIG" Name="ZipLengthTester.exe.config" Source="..\ZipLengthTester\bin\Release\ZipLengthTester.exe.config" />
+                        </Component>
+                        <Component Id="ZIPLENGTHTESTER.PDB" DiskId="1" Guid="D20EE405-28EC-4A5E-B10E-B61B2260FD87">
+                            <File Id="ZIPLENGTHTESTER.PDB" Name="ZipLengthTester.pdb" Source="..\ZipLengthTester\bin\Release\ZipLengthTester.pdb" />
+                        </Component>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="DesktopFolder" />
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ProgramMenuDir" Name="Zip Length Tester">
+                    <Component Id="StartMenuShortcuts" Guid="E76C9E70-1563-49AF-BBE5-489840C19E4E">
+                        <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+                        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" />
+                        <Shortcut Id="UninstallProduct" Name="Uninstall" Description="Uninstalls the application" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+                    </Component>
+                </Directory>
+            </Directory>
+            <Directory Id="SendToFolder" />
+        </Directory>
+        <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+            <ComponentRef Id="ZIPLENGTHTESTER.EXE" />
+            <ComponentRef Id="ZIPLENGTHTESTER.EXE.CONFIG" />
+            <ComponentRef Id="ZIPLENGTHTESTER.PDB" />
+            <ComponentRef Id="StartMenuShortcuts" />
+        </Feature>
+        <UI />
+        <UIRef Id="WixUI_InstallDir" />
+        <Icon Id="DesktopIcon.exe" SourceFile="..\ZipLengthTester\bin\Release\ZipLengthTester.exe" />
+        <Icon Id="StartMenuIcon.exe" SourceFile="..\ZipLengthTester\bin\Release\ZipLengthTester.exe" />
+        <Icon Id="SendToIcon.exe" SourceFile="..\ZipLengthTester\bin\Release\ZipLengthTester.exe" />
+        <Property Id="WIXUI_INSTALLDIR" Value="RELEASE" />
+        <Property Id="DISABLEADVTSHORTCUTS" Value="1" />
+    </Product>
+</Wix>
