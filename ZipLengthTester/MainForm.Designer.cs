@@ -125,6 +125,7 @@
             this.CalcLengthBtn.TabIndex = 7;
             this.CalcLengthBtn.Text = "展開後のサイズを計算";
             this.CalcLengthBtn.UseVisualStyleBackColor = true;
+            this.CalcLengthBtn.Click += new System.EventHandler(this.CalcLengthBtn_Click);
             // 
             // SaveSetteingsBtn
             // 

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO.Compression;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZipLengthTester
 {
@@ -15,6 +13,21 @@ namespace ZipLengthTester
         {
             Debug.Assert(data != null && data.Length > 4);
             return (BitConverter.ToInt32(data, 0) == ZipLeadBytes);
+        }
+
+        public double CountLength(string filePath, int multiplier, bool thousandIsBit)
+        {
+            double d;
+            using (var za = ZipFile.OpenRead(filePath))
+            {
+                var totalLength = za.Entries.Sum(entry => entry.Length);
+                var kiro = thousandIsBit ? 1024 : 1000;
+                d = totalLength / (kiro ^ multiplier);
+
+            }
+
+            return Math.Round(d, 3, MidpointRounding.AwayFromZero);
+
         }
     }
 }

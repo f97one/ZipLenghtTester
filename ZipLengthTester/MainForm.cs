@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -70,8 +71,8 @@ namespace ZipLengthTester
         private IDictionary<int, string> CreateUnitSelectionItems()
         {
             IDictionary<int, string> ret = new Dictionary<int, string>();
-            ret[6] = "MB";
-            ret[3] = "KB";
+            ret[2] = "MB";
+            ret[1] = "KB";
 
             return ret;
         }
@@ -172,7 +173,50 @@ namespace ZipLengthTester
                     toolStripStatusLabel1.Text = "ファイルはZip圧縮されたものではありません。";
                 }
             }
+        }
 
+        private void CalcLengthBtn_Click(object sender, EventArgs e)
+        {
+            LockUi(true);
+
+            if (File.Exists(testFilePath))
+            {
+                try
+                {
+                    int multiplier = (int) this.UnitSelectionBox.SelectedValue;
+                    string unit = this.UnitSelectionBox.SelectedText;
+
+                    bool thousandIsBit = this.ThousandIsBitCheck.Checked;
+                    double totalLen = new ZipFileOperation().CountLength(testFilePath, multiplier, thousandIsBit);
+
+                    string msg = string.Format("このファイルの展開後のサイズは %f %s です。", totalLen, unit);
+                    var sb = new StringBuilder(msg);
+                    
+                    var t = thousandIsBit ? 1024 : 1000;
+                    var limitLen = long.Parse(this.FileLengthLimitBox.Text);
+
+                    var deltas = totalLen - limitLen;
+                    if (deltas > 0)
+                    {
+                        sb.Append(Environment.NewLine).Append(string.Format("%d %s 超過しています。", deltas, unit));
+                    }
+
+                    this.ResultLabel.Text = sb.ToString();
+                    this.ResultLabel.Visible = true;
+                }
+                catch (Exception)
+                {
+                    toolStripStatusLabel1.Text = "ファイルを読み取ることができませんでした";
+                    this.ResultLabel.Visible = false;
+                }
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "選択しているファイルが存在しません。";
+                this.ResultLabel.Visible = false;
+            }
+
+            LockUi(false);
         }
     }
 }
