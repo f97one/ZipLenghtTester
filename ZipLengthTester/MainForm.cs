@@ -177,19 +177,19 @@ namespace ZipLengthTester
 
         private void CalcLengthBtn_Click(object sender, EventArgs e)
         {
-            LockUi(true);
+            LockUi(false);
 
             if (File.Exists(testFilePath))
             {
                 try
                 {
                     int multiplier = (int) this.UnitSelectionBox.SelectedValue;
-                    string unit = this.UnitSelectionBox.SelectedText;
+                    string unit = CreateUnitSelectionItems()[multiplier];
 
                     bool thousandIsBit = this.ThousandIsBitCheck.Checked;
                     double totalLen = new ZipFileOperation().CountLength(testFilePath, multiplier, thousandIsBit);
 
-                    string msg = string.Format("このファイルの展開後のサイズは %f %s です。", totalLen, unit);
+                    string msg = $"このファイルの展開後のサイズは {totalLen:##.##} {unit} です。";
                     var sb = new StringBuilder(msg);
                     
                     var t = thousandIsBit ? 1024 : 1000;
@@ -198,7 +198,7 @@ namespace ZipLengthTester
                     var deltas = totalLen - limitLen;
                     if (deltas > 0)
                     {
-                        sb.Append(Environment.NewLine).Append(string.Format("%d %s 超過しています。", deltas, unit));
+                        sb.Append(Environment.NewLine).Append($"{deltas:##.##} {unit} 超過しています。");
                     }
 
                     this.ResultLabel.Text = sb.ToString();
@@ -216,7 +216,7 @@ namespace ZipLengthTester
                 this.ResultLabel.Visible = false;
             }
 
-            LockUi(false);
+            LockUi(true);
         }
     }
 }
