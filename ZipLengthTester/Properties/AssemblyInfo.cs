@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
 [assembly: AssemblyTitle("ZipLengthTester")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Count total length of each compressed file in zip-format")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Formula97.NET")]
 [assembly: AssemblyProduct("ZipLengthTester")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright ©  2020 HAJIME Fukuna")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
