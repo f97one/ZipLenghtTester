@@ -48,5 +48,6 @@
         <Icon Id="SendToIcon.exe" SourceFile="..\ZipLengthTester\bin\Release\ZipLengthTester.exe" />
         <Property Id="WIXUI_INSTALLDIR" Value="RELEASE" />
         <Property Id="DISABLEADVTSHORTCUTS" Value="1" />
+        <WixVariable Id="WixUILicenseRtf" Value="LICENSE.rtf" />
     </Product>
 </Wix>
