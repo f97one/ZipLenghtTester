@@ -22,7 +22,7 @@ namespace ZipLengthTester
             {
                 var totalLength = za.Entries.Sum(entry => entry.Length);
                 var kiro = thousandIsBit ? 1024 : 1000;
-                d = (double) totalLength / (double) (kiro ^ multiplier);
+                d = (double) totalLength / Math.Pow((double) kiro, (double) multiplier);
 
             }
 
