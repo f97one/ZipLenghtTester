@@ -210,7 +210,7 @@ namespace ZipLengthTester
                     bool thousandIsBit = this.ThousandIsBitCheck.Checked;
                     double totalLen = new ZipFileOperation().CountLength(testFilePath, multiplier, thousandIsBit);
 
-                    string msg = $"このファイルの展開後のサイズは {totalLen:##.##} {unit} です。";
+                    string msg = $"このファイルの展開後のサイズは {totalLen:#0.##} {unit} です。";
                     var sb = new StringBuilder(msg);
 
                     var t = thousandIsBit ? 1024 : 1000;
@@ -219,7 +219,7 @@ namespace ZipLengthTester
                     var deltas = totalLen - limitLen;
                     if (deltas > 0)
                     {
-                        sb.Append(Environment.NewLine).Append($"{deltas:##.##} {unit} 超過しています。");
+                        sb.Append(Environment.NewLine).Append($"{deltas:#0.##} {unit} 超過しています。");
                     }
 
                     this.ResultLabel.Text = sb.ToString();
