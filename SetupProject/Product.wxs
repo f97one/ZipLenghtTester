@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-    <Product Id="3C912C24-8EF7-47A5-85F7-FE6415BB8A72" Name="Zip Length Tester Setuo" Language="1041" Version="1.0.0.0" Manufacturer="HAJIME Fukuna" UpgradeCode="E9CA3117-426F-41FA-8996-CEAE4C022B7A">
+    <Product Id="3C912C24-8EF7-47A5-85F7-FE6415BB8A72" Name="Zip Length Tester Setuo" Language="1041" Version="1.0.1.0" Manufacturer="HAJIME Fukuna" UpgradeCode="E9CA3117-426F-41FA-8996-CEAE4C022B7A">
         <Package Description="Test file in a Product" Comments="Simple test" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" />
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
         <Directory Id="TARGETDIR" Name="SourceDir">
